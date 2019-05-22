@@ -1,0 +1,22 @@
+<table>
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Identificion</td>
+            <td>Operaciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for guardas in guarda %}
+        <tr>
+            <td>{{ guardas.nombre}}</td>
+            <td>{{ guardas.id}}</td>
+            <td>
+                <a href="">Editar</a>
+                <a href="">Eliminar</a>
+                <a href="/addinf/{{guardas._id}}">Infraccion</a>
+            </td>
+        </tr>
+        {% endfor%}
+    </tbody>
+</table>
