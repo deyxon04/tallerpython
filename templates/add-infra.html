@@ -1,10 +1,16 @@
-<form action="" method="post">
-    <input type="text" placeholder="Placa del carro" name="placa" id="">
-    <input type="text" placeholder="Cedula del infractor" name="identificacion" id="">
-    <input type="text" name="fecha" placeholder="Fecha de la infraccion" id="">
+<h1>Estas agregando infracciones a nombre del guarda {{guarda.nombre}}</h1>
+<h1>Con identidicacion {{guarda.id}} </h1>
+<form action="/add-info/{{guarda.id}}/{{guarda.nombre}}" method="post">
+    <input type="text" name="placa" placeholder="Placa del carro" id="">
+    <input type="text" name="identificacion" placeholder="Cedula del infractor" id="">
     <input type="text" name="nombre" placeholder="Nombre dle infractor" id="">
     <input type="text" name="valor" placeholder="valor de la infraccion" id="">
-    <input type="text" name="concepto"  placeholder="Concepto de la infraccion" id="">
-
+    <select class="form-control" name="concepto" id="exampleFormControlSelect1">
+        <option value="Exceso de velicidad">Exceso de velicidad</option>
+        <option value="Sin pase">Sin pase</option>
+        <option value="Conducir bajo la influencia del alcohol">Conducir bajo la influencia del alcohol</option>
+        <option value="Revisión Técnica vencida o rechazada">Revisión Técnica vencida o rechazada</option>
+        <option value="Conducir vehículo sin placa patente">Conducir vehículo sin placa patente</option>
+    </select>
     <button type="submit">Enviar</button>
 </form>

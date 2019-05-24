@@ -12,11 +12,14 @@
             <td>{{ guardas.nombre}}</td>
             <td>{{ guardas.id}}</td>
             <td>
-                <a href="">Editar</a>
-                <a href="">Eliminar</a>
-                <a href="/addinf/{{guardas._id}}">Infraccion</a>
+                <a href="">Editar guarda</a>
+                <a href="">Eliminar guarda</a>
+                <a href="/detail-guarda/{{guardas.id}}">Add Infracciones</a>
+                <a href="/view-guarda/{{guardas.id}}">View Infracciones</a>
             </td>
         </tr>
         {% endfor%}
     </tbody>
+    <br>
+    <a href="/summary" role="button">Ver resumen de Infracciones</a>
 </table>
