@@ -6,8 +6,8 @@
     <h5 class="text-center text-muted">Identidicacion: {{guarda.id}}</h5>
     <h6 class="text-center text-muted">Infracciones asociadas al este guarda</h6>
     <br>
-    <table class="table">
-            <thead>
+    <table class="table table-hover">
+            <thead class="table-primary">
                 <th>Nro Comparendo</th>
                 <th>Indentificacion</th>
                 <th>Fecha infraccion</th>
@@ -16,7 +16,7 @@
                 <th>Concepto infraccion</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-active">
                 {% for infracciones in guarda.infracciones %}
                 <tr>
                     <td>{{infracciones.id}}</td>

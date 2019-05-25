@@ -3,14 +3,14 @@
 <div class="container pt-5">
     <div class="container pt-5">
         <table class="table">
-            <thead class="thead-dark">
+            <thead class="table-primary">
                 <tr>
                     <th scope="col">Nombre guarda </th>
                     <th scope="col">Idetidicación</th>
                     <th scope="col">infracción</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-active">
                 {% for guardas in guarda %}
                 <tr>
                     <td>{{ guardas.nombre}}</td>

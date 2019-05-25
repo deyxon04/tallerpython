@@ -57,7 +57,6 @@ def ViewInfo(id):
 
 @app.route('/summary')
 def Summary():
-    data = []
     infracciones1 = []
     infracciones2 = []
     infracciones3 = []
@@ -66,7 +65,6 @@ def Summary():
 
     cursor = db.infracciones.find()
     for doc in cursor:
-        data.append(doc)
         if doc['concepto'] == 'Exceso de velicidad':
             infracciones1.append(doc)
         if doc['concepto'] == 'Sin pase':
@@ -77,13 +75,12 @@ def Summary():
             infracciones4.append(doc)
         if doc['concepto'] == 'Conducir vehículo sin placa patente':
             infracciones5.append(doc)
-    return render_template('summary.html', data=data, data1=infracciones1, data2=infracciones2, data3=infracciones3, data4=infracciones4, data5=infracciones5)
+    return render_template('summary.html', data1=infracciones1, data2=infracciones2, data3=infracciones3, data4=infracciones4, data5=infracciones5)
 
 
 @app.route('/add-info/<id>/<nombre>', methods=['POST'])
 def addinfra(id, nombre):
     if request.method == 'POST':
-        print(request.form['placa'])
         documentToSupdate = {
             "id": random.randrange(1000),
             "placa": request.form['placa'],
@@ -93,25 +90,12 @@ def addinfra(id, nombre):
             "valor": request.form['valor'],
             "concepto": request.form['concepto']
         }
-    guardas = db.guardas.update_one(
-        {"id": id}, {"$push": {"infracciones": documentToSupdate}})
-    documentToinf = {
-        "id": random.randrange(1000),
-        "placa": request.form['placa'],
-        "identificacion": request.form['identificacion'],
-        "fecha": time.strftime("%d/%m/%y"),
-        "nombre": request.form['nombre'],
-        "valor": request.form['valor'],
-        "concepto": request.form['concepto'],
-        "idguarda": id,
-        "nombreg": nombre
-    }
-    db.infracciones.insert_one(documentToinf)
-    return redirect(url_for('List'))
-
-
-def Porcentaje(X, Y):
-    return X*Y/100
+        guardas = db.guardas.update_one(
+            {"id": id}, {"$push": {"infracciones": documentToSupdate}})
+        documentToSupdate['idguarda'] = id
+        documentToSupdate['nombreg'] = nombre
+        db.infracciones.insert_one(documentToSupdate)
+        return redirect(url_for('List'))
 
 
 if __name__ == '__main__':
