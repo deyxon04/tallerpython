@@ -1,22 +1,32 @@
+{% extends  'layout.html' %}
+{% block body %}
 {% with messages =  get_flashed_messages() %}
 {% if messages  %}
 {% for message in messages %}
-  <p>{{message}}</p>
+<p>{{message}}</p>
 {% endfor%}
 {% endif%}
 {% endwith%}
 
-<form action="/guarda" method="POST">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Nombre guarda</label>
-      <input type="text" name="nombreg" class="form-control" id="inputEmail4" placeholder="Correo">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Identificacion del guarda</label>
-      <input type="text" name="idg" class="form-control" id="inputPassword4" placeholder="Contraseña">
-    </div>
-  </div>
-  <button type="submit">Enviar</button>
-  <a href="/lst-guards">Ver guardas</a>
-</form>
+<div class="container pt-5">
+    <div class="container pt-5">
+        <form action="/guarda" method="POST">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Nombre guarda</label>
+              <input type="text" name="nombreg" class="form-control" id="inputEmail4" placeholder="Nombre del guarda">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Identificacion del guarda</label>
+              <input type="text" name="idg" class="form-control" id="inputPassword4" placeholder="Identificacion">
+            </div>
+          </div>
+          <p class="text-center">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+          </p>
+        </form>
+      </div>
+</div>
+
+
+{% endblock %}

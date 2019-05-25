@@ -1,40 +1,36 @@
-<h1>Nombre guarda: {{guarda.nombre}}</h1>
-<h1>Identidicacion: {{guarda.id}}</h1>
-<h1>Infracciones asociadas al este guarda</h1>
+{% extends  'layout.html' %}
+{% block body %}
+
+<div class="container pt-5">
+    <h4 class="text-center text-primary">Nombre guarda: {{guarda.nombre}}</h4>
+    <h5 class="text-center text-muted">Identidicacion: {{guarda.id}}</h5>
+    <h6 class="text-center text-muted">Infracciones asociadas al este guarda</h6>
+    <br>
+    <table class="table">
+            <thead>
+                <th>Nro Comparendo</th>
+                <th>Indentificacion</th>
+                <th>Fecha infraccion</th>
+                <th>Nombre Infractor</th>
+                <th>Valor Infraccion</th>
+                <th>Concepto infraccion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for infracciones in guarda.infracciones %}
+                <tr>
+                    <td>{{infracciones.id}}</td>
+                    <td>{{infracciones.identificacion}}</td>
+                    <td>{{infracciones.fecha}}</td>
+                    <td>{{infracciones.nombre}}</td>
+                    <td>{{infracciones.valor}}</td>
+                    <td>{{infracciones.concepto}}</td>
+                </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+        
+</div>
 
 
-<table class="table">
-    <thead>
-        <th>Nro Comparendo</th>
-        <th>Indentificacion</th>
-        <th>Fecha infraccion</th>
-        <th>Nombre Infractor</th>
-        <th>Valor Infraccion</th>
-        <th>Concepto infraccion</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for infracciones in guarda.infracciones %}
-        <tr>
-            <td>{{infracciones.id}}</td>
-            <td>{{infracciones.identificacion}}</td>
-            <td>{{infracciones.fecha}}</td>
-            <td>{{infracciones.nombre}}</td>
-            <td>{{infracciones.valor}}</td>
-            <td>{{infracciones.concepto}}</td>
-        </tr>
-        {% endfor%}
-    </tbody>
-</table>
-<table>
-    <thead>
-        <tr>
-
-        </tr>
-    </thead>
-    <tbody>
-
-        <th>
-        </th>
-    </tbody>
-</table>
+{%endblock%}

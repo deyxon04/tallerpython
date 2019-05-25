@@ -58,32 +58,26 @@ def ViewInfo(id):
 @app.route('/summary')
 def Summary():
     data = []
-    cocepto1 = 0
-    cocepto2 = 0
-    cocepto3 = 0
-    cocepto4 = 0
-    cocepto5 = 0
+    infracciones1 = []
+    infracciones2 = []
+    infracciones3 = []
+    infracciones4 = []
+    infracciones5 = []
+
     cursor = db.infracciones.find()
     for doc in cursor:
-        data.append(json.dumps(doc))
-    for concepto in data:
-        print(data)
-        if concepto == "Exceso de Velocidad":
-            cocepto1 = cocepto1 + 1
-        if concepto == "Sin pase":
-            cocepto2 = cocepto2 + 1
-        if concepto == "Conducir bajo la influencia del alcohol":
-            cocepto3 = cocepto3 + 1
-        if concepto == "Revisión Técnica vencida o rechazada":
-            cocepto4 = cocepto4 + 1
-        if concepto == "Conducir vehículo sin placa patente":
-            cocepto5 = cocepto5 + 1
-    print(cocepto1)
-    print(cocepto2)
-    print(cocepto3)
-    print(cocepto4)
-    print(cocepto5)
-    return render_template('summary.html', data=data)
+        data.append(doc)
+        if doc['concepto'] == 'Exceso de velicidad':
+            infracciones1.append(doc)
+        if doc['concepto'] == 'Sin pase':
+            infracciones2.append(doc)
+        if doc['concepto'] == 'Conducir bajo la influencia del alcohol':
+            infracciones3.append(doc)
+        if doc['concepto'] == 'Revisión Técnica vencida o rechazada':
+            infracciones4.append(doc)
+        if doc['concepto'] == 'Conducir vehículo sin placa patente':
+            infracciones5.append(doc)
+    return render_template('summary.html', data=data, data1=infracciones1, data2=infracciones2, data3=infracciones3, data4=infracciones4, data5=infracciones5)
 
 
 @app.route('/add-info/<id>/<nombre>', methods=['POST'])
@@ -114,6 +108,10 @@ def addinfra(id, nombre):
     }
     db.infracciones.insert_one(documentToinf)
     return redirect(url_for('List'))
+
+
+def Porcentaje(X, Y):
+    return X*Y/100
 
 
 if __name__ == '__main__':

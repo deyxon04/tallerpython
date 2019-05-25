@@ -1,1 +1,112 @@
-<h1>Resumen</h1>
+{% extends  'layout.html' %}
+{% block body %}
+<div class="container pt-5">
+    <h5 class="text-primary">Infracciones por Exceso de velocidad: {{ data1|length }}</h5>
+    <h6 class="text-muted">Guardas que registraron la infraccion</h6>
+    <table class="table col-lg-4 ml-5">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Identidicación</th>
+                <th scope="col">Porcentaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in data1%}
+            <tr>
+                <td>{{doc.nombreg}}</td>
+                <td>{{doc.idguarda}}</td>
+                <th>x</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="text-primary">Infracciones por no portar el pase: {{ data2|length }}</h5>
+    <h6 class="text-muted">Guardas que registraron la infraccion</h6>
+    <table class="table col-lg-4 ml-5">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Identidicación</th>
+                <th scope="col">Porcentaje</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in data2%}
+            <tr>
+                <td>{{doc.nombreg}}</td>
+                <td>{{doc.idguarda}}</td>
+                <td>x</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="text-primary">Infracciones por Conducir bajo la influencia del alcohol: {{ data3|length }}</h5>
+    <h6 class="text-muted">Guardas que registraron la infraccion</h6>
+    <table class="table col-lg-4 ml-5">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Identidicación</th>
+                <th scope="col">Porcentaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in data3%}
+            <tr>
+                <td>{{doc.nombreg}}</td>
+                <td>{{doc.idguarda}}</td>
+                <td>x</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="text-primary">Infracciones por Revisión Técnica vencida o rechazada: {{ data4|length }}</h5>
+    <h6 class="text-muted">Guardas que registraron la infraccion</h6>
+    <table class="table col-lg-4 ml-5">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Identidicación</th>
+                <th scope="col">Porcentaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in data4%}
+            <tr>
+                <td>{{doc.nombreg}}</td>
+                <td>{{doc.idguarda}}</td>
+                <td>x</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h5 class="text-primary">Infracciones por Conducir vehículo sin placa patente: {{ data5|length }}</h5>
+    <h6 class="text-muted">Guardas que registraron la infraccion</h6>
+    <table class="table col-lg-4 ml-5">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Identidicación</th>
+                <th scope="col">Porcentaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in data5%}
+            <tr>
+                <td>{{doc.nombreg}}</td>
+                <td>{{doc.idguarda}}</td>
+                <td>x</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3 class="text-danger">Hay un total de {{ data1|length  +data2|length +data3|length +data4|length +data5|length }} infracciones</h3>
+</div>
+
+{% endblock %}
