@@ -8,24 +8,45 @@
 {% endif%}
 {% endwith%}
 
-<div class="container pt-5">
-    <div class="container pt-5">
-        <form action="/guarda" method="POST">
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputEmail4">Nombre guarda</label>
-              <input type="text" name="nombreg" class="form-control" id="inputEmail4" placeholder="Nombre del guarda">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputPassword4">Identificacion del guarda</label>
-              <input type="text" name="idg" class="form-control" id="inputPassword4" placeholder="Identificacion">
-            </div>
-          </div>
-          <p class="text-center">
-            <button class="btn btn-primary" type="submit">Enviar</button>
-          </p>
-        </form>
-      </div>
+<script>
+  function validateSaveGuarda(a, b) {
+    a = document.getElementById('exampleInputEmail1')
+    b = document.getElementById('exampleInputPassword1')
+    if (a == "" && b == "") {
+      swal("Cuidado", "Debes rellenar todos los campos");
+    }
+  }
+
+</script>
+
+<div class="container auto pt-5">
+  <div class="text-primary text-center">
+    <h1 class="display-3">Bienvenido </h1>
+    <p class="lead">Taller final Python</p>
+    <p class="lead">Desarrollado por: Deyxon Miguel Hinestroza Robledo</p>
+  </div>
+
+  <div class="col-lg-6 pt-5" style="margin: 0% auto;">
+    <form action="/guarda">
+      <fieldset>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nombre guarda</label>
+          <input type="text" name="nombreg" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Ingresa el nombre">
+          <small id="emailHelp" class="form-text text-muted">Recuerda que estas regustrando un guarda, asi que el
+            nombre debe ser completo.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Identificacion del guarda</label>
+          <input type="text" name="idg" class="form-control" id="exampleInputPassword1"
+            placeholder="Ingresa la Identificacion">
+        </div>
+        <p class="text-center">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </p>
+      </fieldset>
+    </form>
+  </div>
 </div>
 
 

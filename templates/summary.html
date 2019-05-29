@@ -1,6 +1,6 @@
 {% extends  'layout.html' %}
 {% block body %}
-<div style="margin: 0% auto" class="container pt-5 row">
+<!-- <div style="margin: 0% auto" class="container pt-5 row">
     <div class="col-lg-6 container">
         <h5 class="text-primary">Infracciones por Exceso de velocidad: {{ data1|length }}</h5>
         <table class="table col-lg-4">
@@ -124,6 +124,25 @@
             {{ data1|length  +data2|length +data3|length +data4|length +data5|length }}
             infracciones</h3>
     </div>
+</div> -->
+<div class="container auto pt-5">
+    <div class="text-primary text-center">
+        <h1 class="display-3">Bienvenido a resumen</h1>
+        <p class="lead">Selecciona el tipo de infraccion para ver el resumen</p>
+    </div>
+    <div class="form-group row pt-5">
+        <select name="concepto" class="form-control" id="exampleFormControlSelect1">
+            <option value=""></option>
+            <option value="Exceso de velicidad">Exceso de velicidad</option>
+            <option value="Sin pase">Sin pase</option>
+            <option value="Conducir bajo la influencia del alcohol">Conducir bajo la influencia del alcohol</option>
+            <option value="Revisión Técnica vencida o rechazada">Revisión Técnica vencida o rechazada</option>
+            <option value="Conducir vehículo sin placa patente">Conducir vehículo sin placa patente</option>
+        </select>
+    </div>
+    <p class="lead text-center">
+        <a class="btn btn-primary btn-lg" href="#" role="button">ver resumen</a>
+    </p>
 </div>
 
 {% endblock %}

@@ -44,7 +44,6 @@ def List():
 @app.route('/detail-guarda/<id>')
 def AddInfra(id):
     data = []
-    print(id)
     guarda = db.guardas.find_one({"id": id})
     return render_template('add-infra.html', guarda=guarda)
 
@@ -62,7 +61,14 @@ def Summary():
     infracciones3 = []
     infracciones4 = []
     infracciones5 = []
+    contador1 = 0
+    contador2 = 0
+    contador3 = 0
+    contador4 = 0
+    contador5 = 0
 
+    porc = []
+    dicc = {}
     cursor = db.infracciones.find()
     for doc in cursor:
         if doc['concepto'] == 'Exceso de velicidad':
