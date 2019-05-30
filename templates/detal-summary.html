@@ -1,0 +1,39 @@
+{% extends  'layout.html' %}
+{% block body %}
+{% with messages =  get_flashed_messages() %}
+{% if messages  %}
+{% for message in messages %}
+<p>{{message}}</p>
+{% endfor%}
+{% endif%}
+{% endwith%}
+
+<div class="container auto pt-5">
+    <div class="text-primary text-center">
+        <h1 class="display-3">Resumen de infracción {{data}}</h1>
+    </div>
+    <div class="container pt-5">
+        <table class="table col-lg-12">
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col">Nombre inspector</th>
+                    <th scope="col">Identidicación inspector</th>
+                    <th scope="col">Porcentaje de infracciones</th>
+                </tr>
+            </thead>
+            <tbody class="">
+                {% for doc in inf%}
+                <tr>
+                    <td>{{doc.nombreg}}</td>
+                    <td>{{doc.idguarda}}</td>
+                    <th>x</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+{% endblock %}

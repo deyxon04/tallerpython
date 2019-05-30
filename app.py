@@ -17,6 +17,11 @@ def Index():
     return render_template('index.html')
 
 
+@app.route('/add-guarda')
+def view_Add():
+    return render_template('add-guarda.html')
+
+
 @app.route('/guarda', methods=['POST'])
 def add_guarda():
     if request.method == 'POST':
@@ -29,7 +34,7 @@ def add_guarda():
         }
         guarda = db.guardas.insert_one(newGuarda)
         flash('Guarda guardado correctamente')
-        return redirect(url_for('Index'))
+        return redirect(url_for('List'))
 
 
 @app.route('/lst-guards')
@@ -54,34 +59,34 @@ def ViewInfo(id):
     return render_template('view.info.html', guarda=guarda)
 
 
+@app.route('/detail-summary', methods=['POST'])
+def detal_summary():
+    if request.method == 'POST':
+        type_infraccion = request.form['tipe']
+        print(type_infraccion)
+        infracciones = []
+        cursor = db.infracciones.find()
+        for doc in cursor:
+            if doc['concepto'] == type_infraccion:
+                if len(infracciones) == 0:
+                    infracciones.append(doc)
+                else:
+                    for doc1 in infracciones:
+                        if doc1.get(doc['idguarda']) == None:
+                            infracciones.append(doc)
+
+        for doc in infracciones:
+            cursor = db.infracciones.find(
+                {"idguarda": doc['idguarda'], "concepto": type_infraccion}).count()
+            print(cursor)
+            pass
+    return render_template('detal-summary.html', data=type_infraccion, inf=infracciones)
+
+
 @app.route('/summary')
 def Summary():
-    infracciones1 = []
-    infracciones2 = []
-    infracciones3 = []
-    infracciones4 = []
-    infracciones5 = []
-    contador1 = 0
-    contador2 = 0
-    contador3 = 0
-    contador4 = 0
-    contador5 = 0
 
-    porc = []
-    dicc = {}
-    cursor = db.infracciones.find()
-    for doc in cursor:
-        if doc['concepto'] == 'Exceso de velicidad':
-            infracciones1.append(doc)
-        if doc['concepto'] == 'Sin pase':
-            infracciones2.append(doc)
-        if doc['concepto'] == 'Conducir bajo la influencia del alcohol':
-            infracciones3.append(doc)
-        if doc['concepto'] == 'Revisión Técnica vencida o rechazada':
-            infracciones4.append(doc)
-        if doc['concepto'] == 'Conducir vehículo sin placa patente':
-            infracciones5.append(doc)
-    return render_template('summary.html', data1=infracciones1, data2=infracciones2, data3=infracciones3, data4=infracciones4, data5=infracciones5)
+    return render_template('summary.html')
 
 
 @app.route('/add-info/<id>/<nombre>', methods=['POST'])

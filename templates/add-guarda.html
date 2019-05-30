@@ -1,0 +1,43 @@
+{% extends  'layout.html' %}
+{% block body %}
+{% with messages =  get_flashed_messages() %}
+{% if messages  %}
+{% for message in messages %}
+<p>{{message}}</p>
+{% endfor%}
+{% endif%}
+{% endwith%}
+
+<div class="container auto pt-5">
+    <div class="text-primary text-center pt-5">
+        <h1 class="display-3">Agregar un guarda </h1>
+        <h6 class="text-dark">Aqui podras agregar un guarda a la base de datos</h6>
+    </div>
+
+    <div class="col-lg-6" style="margin: 0% auto;">
+        <br>
+        <form action="/guarda" method="POST">
+            <fieldset>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre guarda</label>
+                    <input type="text" name="nombreg" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Ingresa el nombre">
+                    <small id="emailHelp" class="form-text text-muted">Recuerda que estas regustrando un guarda, asi que
+                        el
+                        nombre debe ser completo.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Identificacion del guarda</label>
+                    <input type="text" name="idg" class="form-control" id="exampleInputPassword1"
+                        placeholder="Ingresa la Identificacion">
+                </div>
+                <p class="text-center">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </p>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

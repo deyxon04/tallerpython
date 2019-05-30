@@ -1,12 +1,13 @@
 {% extends  'layout.html' %}
 {% block body %}
 
-<div class="container pt-5">
-    <h4 class="text-center text-primary">Nombre guarda: {{guarda.nombre}}</h4>
-    <h5 class="text-center text-muted">Identidicacion: {{guarda.id}}</h5>
-    <h6 class="text-center text-muted">Infracciones asociadas al este guarda</h6>
-    <br>
-    <table class="table table-hover">
+<div class="container">
+    <div class="container">
+        <div class="text-primary text-center pt-5">
+            <h3 class="">{{guarda.nombre}} </h3>
+            <p  class="lead">{{guarda.id}}</p>
+        </div>
+        <table class="table table-hover">
             <thead class="table-primary">
                 <th>Nro Comparendo</th>
                 <th>Indentificacion</th>
@@ -16,7 +17,7 @@
                 <th>Concepto infraccion</th>
                 </tr>
             </thead>
-            <tbody class="table-active">
+            <tbody class="">
                 {% for infracciones in guarda.infracciones %}
                 <tr>
                     <td>{{infracciones.id}}</td>
@@ -29,7 +30,8 @@
                 {% endfor%}
             </tbody>
         </table>
-        
+
+    </div>
 </div>
 
 

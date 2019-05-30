@@ -128,21 +128,23 @@
 <div class="container auto pt-5">
     <div class="text-primary text-center">
         <h1 class="display-3">Bienvenido a resumen</h1>
-        <p class="lead">Selecciona el tipo de infraccion para ver el resumen</p>
+        <h5 class="text-dark">Selecciona el tipo de infraccion para ver el resumen</h5>
     </div>
-    <div class="form-group row pt-5">
-        <select name="concepto" class="form-control" id="exampleFormControlSelect1">
-            <option value=""></option>
-            <option value="Exceso de velicidad">Exceso de velicidad</option>
-            <option value="Sin pase">Sin pase</option>
-            <option value="Conducir bajo la influencia del alcohol">Conducir bajo la influencia del alcohol</option>
-            <option value="Revisión Técnica vencida o rechazada">Revisión Técnica vencida o rechazada</option>
-            <option value="Conducir vehículo sin placa patente">Conducir vehículo sin placa patente</option>
-        </select>
-    </div>
-    <p class="lead text-center">
-        <a class="btn btn-primary btn-lg" href="#" role="button">ver resumen</a>
-    </p>
+    <form action="/detail-summary" method="POST">
+        <div class="form-group row pt-5">
+            <select name="tipe" class="form-control" id="exampleFormControlSelect1">
+                <option value=""></option>
+                <option value="Exceso de velicidad">Exceso de velicidad</option>
+                <option value="Sin pase">Sin pase</option>
+                <option value="Conducir bajo la influencia del alcohol">Conducir bajo la influencia del alcohol</option>
+                <option value="Revisión Técnica vencida o rechazada">Revisión Técnica vencida o rechazada</option>
+                <option value="Conducir vehículo sin placa patente">Conducir vehículo sin placa patente</option>
+            </select>
+        </div>
+        <p class="lead text-center">
+            <button class="btn btn-primary btn-lg" type="submit" role="button">ver resumen</button>
+        </p>
+    </form>
 </div>
 
 {% endblock %}
