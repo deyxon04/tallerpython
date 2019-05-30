@@ -18,20 +18,25 @@
                 <tr>
                     <th scope="col">Nombre inspector</th>
                     <th scope="col">Identidicación inspector</th>
-                    <th scope="col">Porcentaje de infracciones</th>
+                    <th scope="col">Numero de infracciones</th>
+                    <th scope="col">Porcentaje</th>
                 </tr>
             </thead>
             <tbody class="">
                 {% for doc in inf%}
                 <tr>
-                    <td>{{doc.nombreg}}</td>
-                    <td>{{doc.idguarda}}</td>
-                    <th>x</th>
+                    <td>{{doc.guarda.nombre}}</td>
+                    <td>{{doc.guarda.id}}</td>
+                    <td>{{doc.infracciones}}</td>
+                    <th>{{(doc. infracciones *100)/total}} %</th>
+                    {% endfor %}
                 </tr>
-                {% endfor %}
+
             </tbody>
         </table>
-
+        <p class="text-center pt-5">
+            <a href="/summary" role="button" class="btn btn-primary">Volver</a>
+        </p>
     </div>
 </div>
 

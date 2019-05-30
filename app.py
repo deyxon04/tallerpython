@@ -63,24 +63,24 @@ def ViewInfo(id):
 def detal_summary():
     if request.method == 'POST':
         type_infraccion = request.form['tipe']
-        print(type_infraccion)
+        guardas = []
         infracciones = []
+        total_infra = 0
         cursor = db.infracciones.find()
         for doc in cursor:
             if doc['concepto'] == type_infraccion:
-                if len(infracciones) == 0:
-                    infracciones.append(doc)
+                if len(guardas) == 0:
+                    guardas.append(doc['idguarda'])
                 else:
-                    for doc1 in infracciones:
-                        if doc1.get(doc['idguarda']) == None:
-                            infracciones.append(doc)
-
-        for doc in infracciones:
+                    if doc['idguarda'] not in guardas:
+                        guardas.append(doc['idguarda'])
+        for guar in guardas:
+            guarda = db.guardas.find_one({"id": guar})
             cursor = db.infracciones.find(
-                {"idguarda": doc['idguarda'], "concepto": type_infraccion}).count()
-            print(cursor)
-            pass
-    return render_template('detal-summary.html', data=type_infraccion, inf=infracciones)
+                {"idguarda": guar, "concepto": type_infraccion}).count()
+            infracciones.append({"infracciones":cursor, "guarda":guarda})
+            total_infra = total_infra + cursor
+    return render_template('detal-summary.html', data=type_infraccion, inf=infracciones,total = total_infra)
 
 
 @app.route('/summary')
